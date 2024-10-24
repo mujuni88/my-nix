@@ -6,7 +6,7 @@
   tmuxDir = ./.config/tmux;
 in {
   home.file = {
-    ".config/tmux/tmux.conf".source = "${tmuxDir}/tmux.conf";
+    ".tmux.conf".source = "${tmuxDir}/.tmux.conf";
   };
 
   programs.tmux = {
@@ -17,7 +17,7 @@ in {
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "wezterm";
 
-    extraConfig = lib.fileContents ../.config/tmux/.config/tmux/tmux.conf;
+    extraConfig = lib.fileContents "${tmuxDir}/.tmux.conf";
 
     plugins = with pkgs.tmuxPlugins; [
       logging

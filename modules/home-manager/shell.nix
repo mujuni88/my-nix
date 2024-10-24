@@ -3,7 +3,7 @@
 in {
   home.file = {
     ".profile".source = "${shellDir}/.profile";
-    "bin" = {
+    ".local/bin" = {
       source = "${shellDir}/bin";
       recursive = true;
     };

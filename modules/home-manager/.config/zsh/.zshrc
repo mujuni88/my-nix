@@ -101,7 +101,7 @@ eval "$(rbenv init -)"
 ############################################
 # Export Paths
 ############################################
-export PATH=$HOME/.dotfiles/homedir/bin:/opt/homebrew/bin:$(yarn global bin):/opt/homebrew/opt/mysql-client/bin:$PATH
+export PATH=$HOME/.local/bin:/opt/homebrew/bin:$(yarn global bin):/opt/homebrew/opt/mysql-client/bin:$PATH
 
 [ -s "/Users/jbuza/.jabba/jabba.sh" ] && source "/Users/jbuza/.jabba/jabba.sh"
 

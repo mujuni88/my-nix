@@ -42,17 +42,21 @@
   }: let
     # Define variables to avoid repetition
     myMac = "Joes-MacBook-Pro";
-    user = builtins.getEnv "USER";
+    username = "jbuza";
 
     # Function for system configuration with darwin modules
     darwinSystem = {
       user,
-      arch ? "aarch64-darwin",
+      arch ? (
+        if builtins.currentSystem == "aarch64-darwin"
+        then "aarch64-darwin"
+        else "x86_64-darwin"
+      ),
     }:
       darwin.lib.darwinSystem {
         system = arch;
         modules = [
-          "./modules/darwin"
+          ./modules/darwin/darwin.nix
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
@@ -68,7 +72,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {inherit user;};
-              users."${user}" = import ./home-manager;
+              users."${user}" = import ./modules/home-manager/home.nix;
             };
           }
         ];
@@ -76,7 +80,7 @@
   in {
     # System configurations using darwinSystem function
     darwinConfigurations = {
-      "${myMac}" = darwinSystem {inherit user;};
+      "${myMac}" = darwinSystem {user = username;};
     };
 
     # Expose package set for reuse or overlays

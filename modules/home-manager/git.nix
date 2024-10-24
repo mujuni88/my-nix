@@ -1,5 +1,5 @@
 {...}: let
-  gitDir = "./.config/git";
+  gitDir = ./.config/git;
 in {
   home.file = {
     ".gitconfig".source = "${gitDir}/.gitconfig";

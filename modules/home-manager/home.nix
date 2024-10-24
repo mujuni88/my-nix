@@ -3,9 +3,10 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: let
-  configDir = "./config/";
+  configDir = ./.config;
 in {
   imports = [
     ./git.nix
@@ -21,18 +22,14 @@ in {
 
   home = {
     username = user;
-    homeDirectory = "/Users/" + user;
+    homeDirectory = lib.mkDefault "/Users/${user}";
     stateVersion = "24.05";
-
-    packages = [];
 
     file = {
       ".config" = {
         source = configDir;
         recursive = true;
       };
-      ".vim".source = "${configDir}/.vim";
-      ".vimrc".source = "${configDir}/.vimrc";
     };
 
     sessionVariables = {

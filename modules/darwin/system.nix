@@ -1,4 +1,7 @@
-{...}: {
+{
+  # Required for nix-darwin versioning
+  stateVersion = 5;
+
   defaults = {
     # Dock settings
     dock = {
@@ -46,7 +49,4 @@
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
-
-  # Required for nix-darwin versioning
-  stateVersion = 5;
 }

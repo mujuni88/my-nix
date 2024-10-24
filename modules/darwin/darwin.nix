@@ -1,11 +1,11 @@
 {pkgs, ...}: let
   # Define variables for reuse
-  user = builtins.getEnv "USER";
+  user = "jbuza";
 
   # Import system packages and homebrew configurations
-  packages = import ./darwin/packages.nix {inherit pkgs;};
-  systemConfig = import ./darwin/system.nix;
-  homebrewConfig = import ./darwin/homebrew.nix;
+  packages = import ./packages.nix {inherit pkgs;};
+  systemConfig = import ./system.nix;
+  homebrewConfig = import ./homebrew.nix;
 in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = packages;
@@ -35,8 +35,9 @@ in {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Set user's home directory. Default is /var/empty
-  users = {
-    users."${user}".home = "/Users/" + user;
+  users.users.${user} = {
+    name = user;
+    home = "/Users/${user}";
   };
 
   # home manager backups
