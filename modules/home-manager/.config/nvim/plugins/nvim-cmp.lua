@@ -1,7 +1,5 @@
 local cmp = require("cmp")
-
 local luasnip = require("luasnip")
-
 local lspkind = require("lspkind")
 
 -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
@@ -11,7 +9,7 @@ cmp.setup({
     completion = {
         completeopt = "menu,menuone,preview,noselect",
     },
-    snippet = {   -- configure how nvim-cmp interacts with snippet engine
+    snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
