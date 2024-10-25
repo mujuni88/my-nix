@@ -1,4 +1,6 @@
 local wezterm = require("wezterm")
+local nav_keys = require("nav")
+
 local config = {}
 
 config = {
@@ -84,41 +86,7 @@ config = {
       format = "mailto:$0",
     },
   },
-  keys = {
-    {
-      key = 'd',
-      mods = 'CMD',
-      action = wezterm.action.SplitHorizontal {
-        domain = 'CurrentPaneDomain'
-      }
-    },
-    {
-      key = 'd',
-      mods = 'SHIFT|CMD',
-      action = wezterm.action.SplitVertical {
-        domain = 'CurrentPaneDomain'
-      }
-    },
-    {
-      key = 'h',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Left',
-    },
-    {
-      key = 'l',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Right',
-    },
-    {
-      key = 'k',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Up',
-    },
-    {
-      key = 'j',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Down',
-    },
-  },
+  keys = nav_keys,
 }
+
 return config
