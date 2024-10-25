@@ -1,15 +1,17 @@
 {...}: let
-  weztermDir = "./.config/wezterm";
+  weztermDir = ./.config/wezterm;
 in {
   home.file = {
-    ".config/wezterm/wezterm.lua" = {
-      source = "${weztermDir}/wezterm.lua";
-      enable = false;
+    ".config/wezterm" = {
+      source = weztermDir;
+      recursive = true;
     };
   };
 
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
+    extraConfig = builtins.readFile "${weztermDir}/wezterm.lua";
   };
 }
