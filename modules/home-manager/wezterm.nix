@@ -1,5 +1,5 @@
 {...}: let
-  weztermDir = ./.config/wezterm;
+  weztermDir = ./config/wezterm;
 in {
   home.file = {
     ".config/wezterm" = {
