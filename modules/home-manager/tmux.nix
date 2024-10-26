@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  tmuxDir = ./.config/tmux;
+  tmuxDir = ./config/tmux;
 in {
   home.file = {
     ".tmux.conf".source = "${tmuxDir}/.tmux.conf";

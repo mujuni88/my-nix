@@ -1,5 +1,5 @@
 {...}: let
-  zshDir = ./.config/zsh;
+  zshDir = ./config/zsh;
 in {
   home.file = {
     ".zshrc".source = "${zshDir}/.zshrc";
