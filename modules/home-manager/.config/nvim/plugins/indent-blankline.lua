@@ -1,3 +1,0 @@
-require("ibl").setup({
-  char = "┊",
-})

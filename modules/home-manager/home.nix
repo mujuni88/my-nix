@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  configDir = ./.config;
+  configDir = ./config;
 in {
   imports = [
     ./git.nix

@@ -1,5 +1,5 @@
 {...}: let
-  shellDir = ./.config/shell;
+  shellDir = ./config/shell;
 in {
   home.file = {
     ".profile".source = "${shellDir}/.profile";

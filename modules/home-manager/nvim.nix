@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  nvimDir = ./.config/nvim;
+  nvimDir = ./config/nvim;
   nvimPluginsDir = "${nvimDir}/plugins";
 in {
   programs.neovim = {
@@ -57,11 +57,17 @@ in {
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/lsp.lua";
       }
-
+      nvim-ts-context-commentstring
       {
         plugin = comment-nvim;
         type = "lua";
-        config = "require(\"Comment\").setup()";
+        config = builtins.readFile "${nvimPluginsDir}/comment.lua";
+      }
+
+      {
+        plugin = todo-comments-nvim;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/todo-comments.lua";
       }
 
       neodev-nvim
@@ -120,7 +126,7 @@ in {
             # Add any other parsers you need
           ]);
         type = "lua";
-        config = builtins.readFile "${nvimPluginDir}/treesitter.lua";
+        config = builtins.readFile "${nvimPluginsDir}/treesitter.lua";
       }
 
       vim-nix
@@ -128,19 +134,25 @@ in {
       {
         plugin = tokyonight-nvim;
         type = "lua";
-        config = builtins.readFile "${nvimPluginDir}/colorscheme.lua";
+        config = builtins.readFile "${nvimPluginsDir}/colorscheme.lua";
       }
 
       {
         plugin = dressing-nvim;
         type = "lua";
-        config = builtins.readFile "${nvimPluginDir}/dressing.lua";
+        config = builtins.readFile "${nvimPluginsDir}/dressing.lua";
       }
 
       {
         plugin = indent-blankline-nvim;
         type = "lua";
-        config = builtins.readFile "${nvimPluginDir}/indent-blankline.lua";
+        config = builtins.readFile "${nvimPluginsDir}/indent-blankline.lua";
+      }
+
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/autopaires.lua";
       }
     ];
 

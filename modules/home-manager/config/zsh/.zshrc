@@ -8,18 +8,15 @@ fi
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-export WEZTERM_THEME="everforest";
-export MY_CONFIG="$HOME/.dotfiles/homedir/.config"
-export MYNIX_CONFIG="$MY_CONFIG/nix-darwin"
-export MYATUIN_CONFIG="$MY_CONFIG/atuin"
-export MYVIM_CONFIG="$MY_CONFIG/nvim"
-export MYWEZ_CONFIG="$MY_CONFIG/wezterm"
-export MYHM_CONFIG="$MY_CONFIG/home-manager"
+export WEZTERM_THEME="everforest"
+export MYNIX="$HOME/my-nix"
+export MYDARWIN="$MYNIX/modules/darwin"
+export MYHOME_MANAGER="$MYNIX/modules/home-manager"
+export MYDOT_CONFIG="$HOME/.dotfiles/homedir/.config"
+export MYVIM_CONFIG="$MYNIX_CONFIG/nvim"
+export MYWEZ_CONFIG="$MYNIX_CONFIG/wezterm"
 
-export STARSHIP_CONFIG="$MY_CONFIG/starship/starship.toml"
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
-
-export ZVM_VI_ESCAPE_BINDKEY="jj"
 
 
 # Set to this to use case-sensitive completion
@@ -199,10 +196,8 @@ _fzf_comprun() {
   esac
 }
 
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
