@@ -1,3 +1,4 @@
 modules/home-manager/config/vim/.vim/undo
 modules/home-manager/config/vim/.vim/bundle
-modules/home-manager/config/raycast
+modules/home-manager/config/raycast/*
+!modules/home-manager/config/raycast/*.rayconfig
