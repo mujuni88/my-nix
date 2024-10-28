@@ -10,6 +10,7 @@ with pkgs; [
   bat # Cat clone with syntax highlighting and Git integration
   ripgrep # Fast text search tool
   alejandra # Nix code formatter
+  lazygit # Git UI
 
   # Code Editors and IDEs
   neovim # Highly configurable text editor
