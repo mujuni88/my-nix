@@ -28,6 +28,7 @@
     # Code Editors and IDEs
     "visual-studio-code"
     "sublime-text"
+    "cursor"
 
     # Web Browsers
     "arc"

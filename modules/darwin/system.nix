@@ -20,6 +20,7 @@
         "/Applications/Notion.app"
         "/Applications/ChatGPT.app"
         "/Applications/Visual Studio Code.app"
+        "/Applications/Cursor.app"
         "/Applications/WezTerm.app"
       ];
     };

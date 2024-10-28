@@ -16,92 +16,113 @@ in {
       wl-clipboard
       alejandra
       ripgrep
+      lazygit
     ];
 
     plugins = with pkgs.vimPlugins; [
+      # Core Dependencies
+      plenary-nvim # Required by multiple plugins
+      nvim-web-devicons # Icons for multiple plugins
+
+      # UI Components
       {
-        plugin = bufferline-nvim;
+        plugin = alpha-nvim; # Dashboard
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/alpha.lua";
+      }
+      {
+        plugin = bufferline-nvim; # Buffer/Tab line
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/bufferline.lua";
       }
+      {
+        plugin = lualine-nvim; # Status line
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/lualine.lua";
+      }
+      {
+        plugin = indent-blankline-nvim; # Indentation guides
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/indent-blankline.lua";
+      }
+      {
+        plugin = dressing-nvim; # Better UI elements
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/dressing.lua";
+      }
 
+      # Navigation and File Management
+      {
+        plugin = nvim-tree-lua; # File explorer
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/nvim-tree.lua";
+      }
+      {
+        plugin = telescope-nvim; # Fuzzy finder
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/telescope.lua";
+      }
+      telescope-fzf-native-nvim # Telescope performance improvement
+      vim-tmux-navigator # Pane navigation
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/gitsigns.lua";
+      }
+      {
+        plugin = lazygit-nvim;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/lazygit.lua";
+      }
+
+      # Session Management
       {
         plugin = auto-session;
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/auto-session.lua";
       }
+
+      # LSP, Completion, and Snippets
       {
-        plugin = which-key-nvim;
+        plugin = conform-nvim;
         type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/which-key.lua";
+        config = builtins.readFile "${nvimPluginsDir}/formatting.lua";
       }
-      plenary-nvim
-      vim-tmux-navigator # Allows to switch panes with CTRL + jkhl
-
-      {
-        plugin = nvim-tree-lua;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/nvim-tree.lua";
-      }
-
-      {
-        plugin = alpha-nvim;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/alpha.lua";
-      }
-
-      trouble-nvim
-
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/lsp.lua";
+        config = builtins.readFile "${nvimPluginsDir}/lsp/lspconfig.lua";
       }
-      nvim-ts-context-commentstring
+      mason-nvim # Package manager for LSP servers
+      mason-tool-installer-nvim
       {
-        plugin = comment-nvim;
+        plugin = mason-lspconfig-nvim;
         type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/comment.lua";
+        config = builtins.readFile "${nvimPluginsDir}/lsp/mason.lua";
       }
-
+      neodev-nvim # Neovim API completion
       {
-        plugin = todo-comments-nvim;
+        plugin = trouble-nvim; # LSP diagnostics viewer
         type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/todo-comments.lua";
+        config = builtins.readFile "${nvimPluginsDir}/trouble.lua";
       }
-
-      neodev-nvim
-
-      nvim-cmp
       {
         plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/nvim-cmp.lua";
       }
-
       {
-        plugin = telescope-nvim;
+        plugin = nvim-lint;
         type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/telescope.lua";
+        config = builtins.readFile "${nvimPluginsDir}/linting.lua";
       }
-
-      telescope-fzf-native-nvim
-
       cmp_luasnip
       cmp-nvim-lsp
       lspkind-nvim
-
       luasnip
       friendly-snippets
 
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/lualine.lua";
-      }
-
-      nvim-web-devicons
-
+      # Code Enhancement
       {
         plugin = nvim-treesitter.withPlugins (p:
           with p; [
@@ -128,32 +149,41 @@ in {
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/treesitter.lua";
       }
+      {
+        plugin = nvim-autopairs; # Auto close brackets
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/autopaires.lua";
+      }
 
-      vim-nix
+      # Comments
+      nvim-ts-context-commentstring
+      {
+        plugin = comment-nvim;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/comment.lua";
+      }
+      {
+        plugin = todo-comments-nvim;
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/todo-comments.lua";
+      }
 
+      # Keybinding
+      {
+        plugin = which-key-nvim; # Keybinding helper
+        type = "lua";
+        config = builtins.readFile "${nvimPluginsDir}/which-key.lua";
+      }
+
+      # Theme
       {
         plugin = tokyonight-nvim;
         type = "lua";
         config = builtins.readFile "${nvimPluginsDir}/colorscheme.lua";
       }
 
-      {
-        plugin = dressing-nvim;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/dressing.lua";
-      }
-
-      {
-        plugin = indent-blankline-nvim;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/indent-blankline.lua";
-      }
-
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = builtins.readFile "${nvimPluginsDir}/autopaires.lua";
-      }
+      # Language Specific
+      vim-nix # Nix support
     ];
 
     extraLuaConfig = ''
