@@ -67,6 +67,5 @@
   masApps = {
     "Yoink" = 457622435;
     "EdisonMail" = 1489591003;
-    "Claude" = 1489591003;
   };
 }
