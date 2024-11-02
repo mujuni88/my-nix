@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  nvimDir = ./config/nvim;
+  nvimDir = ./config/nvim-nix;
   nvimPluginsDir = "${nvimDir}/plugins";
 in {
   programs.neovim = {

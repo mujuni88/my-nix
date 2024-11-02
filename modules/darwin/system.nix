@@ -19,6 +19,7 @@
         "/Applications/Google Chrome.app"
         "/Applications/Notion.app"
         "/Applications/ChatGPT.app"
+        "/Applications/Claude.app"
         "/Applications/Visual Studio Code.app"
         "/Applications/Cursor.app"
         "/Applications/WezTerm.app"

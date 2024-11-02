@@ -13,8 +13,8 @@ export MYNIX="$HOME/my-nix"
 export MYDARWIN="$MYNIX/modules/darwin"
 export MYHOME_MANAGER="$MYNIX/modules/home-manager"
 export MYDOT_CONFIG="$HOME/.dotfiles/homedir/.config"
-export MYVIM_CONFIG="$MYNIX_CONFIG/nvim"
-export MYWEZ_CONFIG="$MYNIX_CONFIG/wezterm"
+export MYVIM_CONFIG="$MYNIX/nvim"
+export MYWEZ_CONFIG="$MYNIX/wezterm"
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
 

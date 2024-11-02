@@ -13,10 +13,8 @@ in {
     ./tmux.nix
     ./shell.nix
     ./wezterm.nix
-    (import ./nvim.nix {inherit pkgs inputs;})
-    # ./bat.nix
-    # ./fzf.nix
-    # ./eza.nix
+    # ./nvim-original.nix
+    ./nvim.nix
   ];
 
   home = {
@@ -24,12 +22,12 @@ in {
     homeDirectory = lib.mkDefault "/Users/${user}";
     stateVersion = "24.05";
 
-    file = {
-      ".config" = {
-        source = configDir;
-        recursive = true;
-      };
-    };
+    # file = {
+    #   ".config" = {
+    #     source = configDir;
+    #     recursive = true;
+    #   };
+    # };
 
     sessionPath = [
       "$HOME/.local/bin"
