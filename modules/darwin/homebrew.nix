@@ -46,7 +46,6 @@
     "raycast"
     "chatgpt"
     "claude"
-    "amethyst"
 
     # Media and Entertainment
     "spotify"
@@ -67,5 +66,6 @@
   masApps = {
     "Yoink" = 457622435;
     "EdisonMail" = 1489591003;
+    "SparkMail" = 1176895641;
   };
 }

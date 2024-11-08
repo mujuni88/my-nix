@@ -12,7 +12,7 @@
       tilesize = 48;
       persistent-apps = [
         "/System/Applications/Calendar.app"
-        "/Applications/Email.app"
+        "/Applications/Spark.app"
         "/System/Applications/Messages.app"
         "/Applications/Slack.app"
         "/Applications/Arc.app"
