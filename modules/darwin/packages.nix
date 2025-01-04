@@ -27,6 +27,7 @@ with pkgs; [
   go # Go programming language
   tree # Directory listing as a tree
   fnm # Fast Node.js version manager
+  stow # Dotfiles management
 
   # Utility Applications
   unar # Universal archive unpacker

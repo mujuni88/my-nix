@@ -18,11 +18,12 @@
     "mas"
     "zsh-syntax-highlighting"
     "zsh-autocomplete"
+    "stow"
   ];
-
-  casks = [
+casks = [
     # Terminal and Shell Tools
     "wezterm@nightly"
+    "ghostty"
     "amazon-q"
 
     # Code Editors and IDEs
