@@ -23,12 +23,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-
-    # Home-manager - Manage user environments
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -38,10 +32,9 @@
     nix-homebrew,
     homebrew-core,
     homebrew-cask,
-    home-manager,
   }: let
     # Define variables to avoid repetition
-    myMac = "Joes-MacBook-Pro";
+    myMac = "macos";
     username = "jbuza";
 
     # Function for system configuration with darwin modules
@@ -64,15 +57,6 @@
               enableRosetta = true; # Apple Silicon: Enable Intel binaries via Rosetta
               user = user;
               autoMigrate = true;
-            };
-          }
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit user;};
-              users."${user}" = import ./modules/home-manager/home.nix;
             };
           }
         ];

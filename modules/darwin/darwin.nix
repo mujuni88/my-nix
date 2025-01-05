@@ -14,7 +14,20 @@ in {
   homebrew = homebrewConfig;
 
   # System configurations
-  system = systemConfig;
+  system = {
+    defaults = import ./system.nix;
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
+    };
+    
+    # Configure trackpad behavior
+    activationScripts.postActivation.text = ''
+      # Load trackpad settings
+      defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+      defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+    '';
+  };
 
   # Font packages
   fonts.packages = [
@@ -39,7 +52,4 @@ in {
     name = user;
     home = "/Users/${user}";
   };
-
-  # home manager backups
-  home-manager.backupFileExtension = "backup";
 }

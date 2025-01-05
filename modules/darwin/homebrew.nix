@@ -19,17 +19,36 @@
     "zsh-syntax-highlighting"
     "zsh-autocomplete"
     "stow"
+    "tmux"
+    "starship"
+    "zoxide"
+    "fzf"
+    "atuin"
+    "gnu-sed"
+    "bat"
+    "ripgrep"
+    "lazygit"
+    "neovim"
+    "git-delta"
+    "docker"
+    "rustup"
+    "ngrok"
+    "deno"
+    "go"
+    "tree"
+    "fnm"
   ];
-casks = [
+
+  casks = [
     # Terminal and Shell Tools
     "wezterm@nightly"
     "ghostty"
-    "amazon-q"
 
     # Code Editors and IDEs
     "visual-studio-code"
     "sublime-text"
     "cursor"
+    "windsurf"
 
     # Web Browsers
     "arc"
