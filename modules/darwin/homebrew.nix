@@ -14,6 +14,9 @@
   # Use a global Brewfile to manage Homebrew dependencies across the system
   global.brewfile = true;
 
+  # Cleanup Homebrew packages not in the config
+  # onActivation.cleanup = "uninstall";
+
   brews = [
     "mas"
     "zsh-syntax-highlighting"
@@ -32,7 +35,6 @@
     "git-delta"
     "docker"
     "rustup"
-    "ngrok"
     "deno"
     "go"
     "tree"
@@ -47,7 +49,6 @@
     # Code Editors and IDEs
     "visual-studio-code"
     "sublime-text"
-    "cursor"
     "windsurf"
 
     # Web Browsers
@@ -81,6 +82,10 @@
 
     # Finance and Cryptocurrency
     "ledger-live"
+    "ngrok"
+
+    # Added Karabiner Elements
+    "karabiner-elements"
   ];
 
   masApps = {

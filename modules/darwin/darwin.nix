@@ -15,11 +15,7 @@ in {
 
   # System configurations
   system = {
-    defaults = import ./system.nix;
-    keyboard = {
-      enableKeyMapping = true;
-      remapCapsLockToEscape = true;
-    };
+    stateVersion = 5;  # Match the version in system.nix
     
     # Configure trackpad behavior
     activationScripts.postActivation.text = ''
@@ -27,12 +23,26 @@ in {
       defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
       defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
     '';
+
+    # Import system defaults from system.nix
+    defaults = systemConfig;
+
+    # Keyboard settings
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
   };
 
   # Font packages
   fonts.packages = [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+    pkgs.nerd-fonts.jetbrains-mono
   ];
+
+  # Environment variables
+  environment = {
+    # Add environment variables here if needed
+  };
 
   # Auto-upgrade Nix package and daemon service
   services.nix-daemon.enable = true;
@@ -41,13 +51,17 @@ in {
   # Nix flakes settings
   nix.settings.experimental-features = "nix-command flakes";
 
-  # Zsh as the default shell
-  programs.zsh.enable = true;
+  # Create /etc/zshrc that loads the nix-darwin environment
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableBashCompletion = true;
+  };
 
   # Platform configuration for Apple Silicon
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Set user's home directory. Default is /var/empty
+  # User configuration
   users.users.${user} = {
     name = user;
     home = "/Users/${user}";
